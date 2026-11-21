@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import { securityHeaders } from '../scripts/security-headers.mjs';
+import { securityHeaders } from './scripts/security-headers.mjs';
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -23,9 +23,9 @@ export default defineConfig(({ command, mode }) => {
       strictPort: true
     },
     // `vite preview` serves the production build with the same security
-    // headers as the hosting config (see scripts/security-headers.mjs).
+    // headers as the hosting config.
     preview: {
-      headers: securityHeaders('super-admin-app'),
+      headers: securityHeaders(),
     },
   };
 });
